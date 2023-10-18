@@ -1,4 +1,4 @@
-package com.ise.patrickandjean.quizapp2;
+package com.ise.patrickandjean.quizapp2.Pages.Login;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,9 +31,5 @@ public class LoginApplication extends Application {
         /// Display!
         primaryStage.setMaximized(true);
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        Application.launch(args);
     }
 }

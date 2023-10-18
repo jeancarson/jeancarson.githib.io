@@ -39,6 +39,15 @@
     </dependency>  </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>com.ise.patrickandjean.quizapp2.Directory</directory>
+        <includes>
+          <include>*.json</include>
+        </includes>
+      </resource>
+    </resources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -58,7 +67,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.ise.patrickandjean.quizapp2/com.ise.patrickandjean.quizapp2.LoginApplication</mainClass>
+              <mainClass>com.ise.patrickandjean.quizapp2/com.ise.patrickandjean.quizapp2.Pages.Login.LoginApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
