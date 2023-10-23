@@ -2,16 +2,17 @@ package com.ise.patrickandjean.quizapp2.Pages.Login;
 
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
 
-import com.ise.patrickandjean.quizapp2.Services.UtilityService;
+import com.ise.patrickandjean.quizapp2.Services.UIService;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -25,6 +26,7 @@ public class LoginController {
 
     /// Internal Funcs
     private void displayError(String text) {
+        authButtonBusy = true;
         /// Update color to red
         authButton.setStyle("-fx-background-color: #FF6666;");
         authButton.setText(text);
@@ -32,17 +34,32 @@ public class LoginController {
         PauseTransition resetTransition = new PauseTransition(Duration.seconds(1));
         resetTransition.setOnFinished(e -> {
             authButton.setStyle("-fx-background-color: #50C878;");
-            authButton.setText("Sign In");
+            updateSignInButtonText();
+            authButtonBusy = false;
         });
         resetTransition.play();
     }
 
-    private void moveToDifficultyChooserScene() {
-        UtilityService.print("Request move to difficulty chooser scene");
+    private void moveToDifficultyChooserScene() throws IOException {
+        UIService.setActiveScene("DifficultyChooser");
+    }
+
+    private void updateSignInButtonText() {
+        String username = usernameField.getText().toLowerCase();
+
+        if (SaveService.doesUserExist(username)) {
+            authButton.setText("Sign In");
+            return;
+        }
+
+        authButton.setText("Register");
     }
 
     /// Public Funcs
-    public void authButtonPressed() {
+    private boolean authButtonBusy = false;
+    public void authButtonPressed() throws IOException {
+        if (authButtonBusy) return;
+
         String username = usernameField.getText().toLowerCase();
         String password = passwordField.getText();
 
@@ -77,21 +94,10 @@ public class LoginController {
     public void initialize() {
         /// As someone enters a username - if it's valid we change "Register" to "Sign In"
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (SaveService.doesUserExist(newValue)) {
-                authButton.setText("Sign In");
-                return;
-            }
-
-            authButton.setText("Register");
+            updateSignInButtonText();
         });
 
         /// Change mouse to pointer when hovering auth button
-        authButton.setOnMouseEntered(e -> {
-            allHolder.getScene().setCursor(Cursor.HAND);
-        });
-
-        authButton.setOnMouseExited(e -> {
-            allHolder.getScene().setCursor(Cursor.DEFAULT);
-        });
+        UIService.Framework.addPointerFX(authButton);
     }
 }

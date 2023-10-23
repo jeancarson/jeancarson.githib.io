@@ -1,0 +1,77 @@
+.root {
+    -fx-background-color: #1A2433;
+}
+
+.bounding-box {
+    -fx-background-color: #2C3E50;
+    -fx-background-radius: 20px;
+    -fx-border-color: #2C3E50;
+    -fx-border-radius: 20px;
+    -fx-max-width: 680px;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-max-height: 225px;
+}
+
+.outer-rectangle {
+    -fx-fill: "#2C3E50";
+    -fx-radius: 20px;
+}
+
+/* Common button styles */
+.button {
+    -fx-font-family: 'Arial';  /* Choose your desired font */
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-letter-spacing: 1px;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0.1, 1, 1);
+}
+
+.random-draw-button {
+    -fx-background-color: #3498db;  /* Blue */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 20px;
+}
+
+.random-draw-button:hover {
+    -fx-background-color: #2980b9; /* Darker Blue */
+}
+
+.increasing-difficulty-button {
+    -fx-background-color: #e74c3c;  /* Red */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 20px;
+}
+
+.increasing-difficulty-button:hover {
+    -fx-background-color: #c0392b; /* Darker Red */
+}
+
+.elimination-button {
+    -fx-background-color: #2ecc71;  /* Green */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 20px;
+}
+
+.elimination-button:hover {
+    -fx-background-color: #27ae60; /* Darker Green */
+}
+
+.logo {
+    -fx-font-family: 'Arial';
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-padding: 10px 0px 10px 0px;
+}
+
+.separator-line {
+    -fx-stroke: lightgrey;
+    -fx-stroke-width: 1px;
+}
+

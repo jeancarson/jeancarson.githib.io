@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="allHolder" stylesheets="@DifficultyChooserStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" maxHeight="200" fx:controller="com.ise.patrickandjean.quizapp2.Pages.DifficultyChooser.DifficultyChooserController">
+    <Rectangle styleClass="outer-rectangle" width="680" height="200"/>
+    <VBox spacing="20" styleClass="bounding-box">
+        <Text text="Select Mode!" styleClass="logo" />
+        <Line endX="650" styleClass="separator-line" />
+        <HBox spacing="15">
+            <Button fx:id="randomDrawButton" minHeight="70" minWidth="210" styleClass="random-draw-button" text="Random Draw" onAction="#selectModeButtonPressed" />
+            <Button fx:id="increasingDifficultyButton" minHeight="70" minWidth="210" styleClass="increasing-difficulty-button" text="Increasing Difficulty" wrapText="true" onAction="#selectModeButtonPressed" />
+            <Button fx:id="eliminationButton" minHeight="70" minWidth="210" styleClass="elimination-button" text="Elimination" onAction="#selectModeButtonPressed" />
+        </HBox>
+    </VBox>
+</StackPane>
