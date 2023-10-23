@@ -39,15 +39,6 @@
     </dependency>  </dependencies>
 
   <build>
-    <resources>
-      <resource>
-        <directory>com.ise.patrickandjean.quizapp2.Directory</directory>
-        <includes>
-          <include>*.json</include>
-        </includes>
-      </resource>
-    </resources>
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

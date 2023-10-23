@@ -25,7 +25,7 @@ public class SaveService {
     private static JsonObject allSaves;
 
     /// TODO: This should be set to the username of the currently authenticated user :D
-    private static String currentlyAuthenticatedUser;
+    private static String currentlyAuthenticatedUser = "";
 
     /// Helper Functions
     /**
@@ -42,14 +42,16 @@ public class SaveService {
         return true;
     }
 
-    public static String getCurrentUser() {
-        /// Handle bad state
-        if (currentlyAuthenticatedUser.isEmpty()) {
-            UtilityService.print("ILLEGAL STATE: Tried to get current user before initialisation completed! Exiting!");
-            System.exit(-1);
+    private static void assertAuthStateIs(boolean expectedAuthState) {
+        boolean isStateAsExpected = currentlyAuthenticatedUser.isEmpty() == !expectedAuthState;
+        if (!isStateAsExpected) {
+            UtilityService.print("CUR:", currentlyAuthenticatedUser.isEmpty(), "EXP:", expectedAuthState);
+            throw new IllegalStateException("Auth State Mismatch!");
         }
+    }
 
-        ///
+    public static String getCurrentUser() {
+        assertAuthStateIs(true);
         return currentlyAuthenticatedUser;
     }
 
@@ -80,6 +82,9 @@ public class SaveService {
     }
 
     public static void registerUser(String username, String password) {
+        /// Sanity
+        assertAuthStateIs(false);
+
         /// Create a new save for this new user
         JsonObject newSaveData = new JsonObject();
         newSaveData.addProperty("password", password);
@@ -93,6 +98,9 @@ public class SaveService {
     }
 
     public static boolean loginUser(String username, String password) {
+        /// Sanity
+        assertAuthStateIs(false);
+
         /// Ask them to provide their password
         String actualPassword = allSaves.get(username).getAsJsonObject().get("password").getAsString();
 

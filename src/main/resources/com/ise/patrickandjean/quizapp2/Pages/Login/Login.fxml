@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<StackPane stylesheets="@LoginStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ise.patrickandjean.quizapp2.Pages.Login.LoginController">
+<StackPane fx:id="allHolder" stylesheets="@LoginStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ise.patrickandjean.quizapp2.Pages.Login.LoginController">
   <Rectangle styleClass="outer-rectangle"/>
   <VBox spacing="10" styleClass="bounding-box">
 
