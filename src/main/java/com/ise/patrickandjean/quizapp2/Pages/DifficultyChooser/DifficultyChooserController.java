@@ -24,22 +24,24 @@ public class DifficultyChooserController {
     @FXML
     public Button eliminationButton;
 
-    public void selectModeButtonPressed(ActionEvent event) {
+    public void selectModeButtonPressed(ActionEvent event) throws IOException {
         /// Vars
-        String buttonPressedName = ( (Button) event.getSource() ).getId();
+        String buttonPressedName = ((Button) event.getSource()).getId();
+
+        UIService.setActiveScene("QuestionAsker");
 
         /// Perform correct action
-        if (buttonPressedName == "eliminationButton") {
+        if (buttonPressedName.equals("eliminationButton")) {
             /// do elimination stuff
             return;
         }
 
-        if (buttonPressedName == "increasingDifficultyButton") {
+        if (buttonPressedName.equals("increasingDifficultyButton")) {
             /// do increasing diff stuff
             return;
         }
 
-        if (buttonPressedName == "randomDrawButton") {
+        if (buttonPressedName.equals("randomDrawButton")) {
             /// do random draw stuff
             return;
         }

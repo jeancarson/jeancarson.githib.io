@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane fx:id="questionHolder" stylesheets="@QuestionAskerStyle.css" xmlns="http://javafx.com/javafx/20.0.1"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ise.patrickandjean.quizapp2.Pages.QuestionAsker.QuestionAskerController">
+    <Rectangle styleClass="outer-rectangle"/>
+    <BorderPane styleClass="bounding-box-question">
+        <!-- Top section with timer on left and question number on right using HBox -->
+        <top>
+            <HBox spacing="20">
+                <Label styleClass="topbar-text" text="0:00"/>
+                <HBox HBox.hgrow="ALWAYS"/> <!-- This pushes the next items to the end of the HBox -->
+                <Label styleClass="topbar-text" text="1/X"/>
+            </HBox>
+        </top>
+
+        <!-- Center for main content -->
+        <center>
+            <VBox spacing="20" alignment="CENTER">
+                <Label styleClass="quiz-question"
+                       text="Really wrong question right hereee :)"
+                       wrapText="true"
+                       alignment="CENTER"/>
+                <Button fx:id="btnA" styleClass="answer-button" text="Answer 1"/>
+                <Button fx:id="btnB" styleClass="answer-button" text="Answer 2"/>
+                <Button fx:id="btnC" styleClass="answer-button" text="Answer 3"/>
+                <Button fx:id="btnD" styleClass="answer-button" text="Answer 4"/>
+            </VBox>
+        </center>
+    </BorderPane>
+</StackPane>

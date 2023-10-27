@@ -57,14 +57,14 @@ public class LoginController {
 
     /// Public Funcs
     private boolean authButtonBusy = false;
+
     public void authButtonPressed() throws IOException {
         if (authButtonBusy) return;
 
         String username = usernameField.getText().toLowerCase();
         String password = passwordField.getText();
 
-        if (username.isEmpty())
-        {
+        if (username.isEmpty()) {
             displayError("Enter a Username!");
             return;
         }
@@ -84,13 +84,14 @@ public class LoginController {
 
         /// Try to log them in!
         if (!SaveService.loginUser(username, password)) {
-            displayError("Invalid username or password!");
+            displayError("Invalid password!");
             return;
         }
 
         ///
         moveToDifficultyChooserScene();
     }
+
     public void initialize() {
         /// As someone enters a username - if it's valid we change "Register" to "Sign In"
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> {

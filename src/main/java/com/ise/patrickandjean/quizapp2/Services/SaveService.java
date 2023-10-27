@@ -24,17 +24,17 @@ public class SaveService {
      */
     private static JsonObject allSaves;
 
-    /// TODO: This should be set to the username of the currently authenticated user :D
     private static String currentlyAuthenticatedUser = "";
 
     /// Helper Functions
+
     /**
      * Writes the current contents of allSaves to SaveData.json
      */
     public static boolean writeSaveDataToFile(String jsonDataAsString) {
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(SAVE_DATA_RELATIVE_PATH_STRING))) {
             fileWriter.write(jsonDataAsString);
-        } catch(IOException e) {
+        } catch (IOException e) {
             UtilityService.print("Failed to write jsonStringData", jsonDataAsString, "to disk due to:", e.getMessage());
             return false;
         }
@@ -59,7 +59,7 @@ public class SaveService {
         try {
             Path saveLocation = Path.of(SAVE_DATA_RELATIVE_PATH_STRING);
             allSaves = JsonParser.parseString(Files.readString(saveLocation, StandardCharsets.UTF_8)).getAsJsonObject();
-        } catch(JsonSyntaxException | IOException fileLoadFailException) {
+        } catch (JsonSyntaxException | IOException fileLoadFailException) {
             if (fileLoadFailException instanceof IOException) {
                 UtilityService.print("No save file created - creating one for you!");
             } else {
@@ -105,14 +105,14 @@ public class SaveService {
         String actualPassword = allSaves.get(username).getAsJsonObject().get("password").getAsString();
 
         /// Is the password correct?
-       if (!password.toLowerCase().equals(actualPassword)) {
-           return false;
-       }
+        if (!password.toLowerCase().equals(actualPassword)) {
+            return false;
+        }
 
         /// Assigned :)
         currentlyAuthenticatedUser = username;
 
-       ///
+        ///
         return true;
     }
 

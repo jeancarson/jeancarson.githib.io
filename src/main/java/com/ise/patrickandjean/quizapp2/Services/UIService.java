@@ -25,7 +25,7 @@ public class UIService {
     public static void setActiveScene(String name) throws IOException {
         /// Get UI elements + css
         Parent root = FXMLLoader.load(getResource("/" + name + "/" + name + ".fxml"));
-        String resourcePath = getResource("/" + name +  "/" + name + "Style.css").toExternalForm();
+        String resourcePath = getResource("/" + name + "/" + name + "Style.css").toExternalForm();
 
         /// Update scene
         if (primaryStage.getScene() != null) {
@@ -72,7 +72,7 @@ public class UIService {
         primaryStage.setTitle("Quizler — " + title);
     }
 
-    public class Framework {
+    public static class Framework {
         public static void addPointerFX(Button button) {
             /// Change mouse to pointer when hovering auth button
             button.setOnMouseEntered(e -> {

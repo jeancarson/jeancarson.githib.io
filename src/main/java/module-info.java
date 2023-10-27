@@ -12,4 +12,7 @@ module com.ise.patrickandjean.quizapp2 {
 
     exports com.ise.patrickandjean.quizapp2.Pages.DifficultyChooser;
     opens com.ise.patrickandjean.quizapp2.Pages.DifficultyChooser to javafx.fxml;
+
+    exports com.ise.patrickandjean.quizapp2.Pages.QuestionAsker;
+    opens com.ise.patrickandjean.quizapp2.Pages.QuestionAsker to javafx.fxml;
 }
