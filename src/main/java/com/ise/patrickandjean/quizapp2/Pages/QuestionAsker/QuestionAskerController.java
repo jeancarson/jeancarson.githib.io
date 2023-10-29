@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -131,7 +132,7 @@ public class QuestionAskerController {
         }
     }
 
-    public QuizSession finishQuizSessionAndReturn() {
+    public void finishQuizSessionAndShowStats() {
         /// End session data collection
         currentSession.endSession();
 
@@ -139,8 +140,13 @@ public class QuestionAskerController {
         QuizSession temp = currentSession;
         currentSession = null;
 
-        ///
-        return temp;
+        /// TODO: Add currentSession here!
+        /// Show stats
+        try {
+            UIService.setActiveScene("Stats");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void answerSelected(ActionEvent event) {

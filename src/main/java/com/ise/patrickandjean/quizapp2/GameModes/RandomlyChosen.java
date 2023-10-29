@@ -2,13 +2,10 @@ package com.ise.patrickandjean.quizapp2.GameModes;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
 import com.ise.patrickandjean.quizapp2.BaseClasses.QuestionBank;
-import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.Pages.QuestionAsker.QuestionAskerController;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
-import com.ise.patrickandjean.quizapp2.Services.UtilityService;
 import javafx.concurrent.Task;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class RandomlyChosen {
@@ -27,18 +24,17 @@ public class RandomlyChosen {
                 QuestionAskerController questionAskerController = (QuestionAskerController) UIService.getController("QuestionAsker");
                 questionAskerController.startNewQuizSession(TOTAL_QUESTIONS);
 
-                /// Keep asking while we have more
+                /// Keep asking while we have more questions
                 while (!questionsToAsk.isEmpty()) {
+                    /// Shift a question off the front of the list
                     Question nextQuestion = questionsToAsk.remove(0);
-
 
                     /// This yields until the user chooses an answer
                     questionAskerController.nextQuestion(nextQuestion);
                 }
 
-                QuizSession finishedData = questionAskerController.finishQuizSessionAndReturn();
-                UtilityService.print("total qs:", finishedData.getMaxQuestionCount(), "correct:", finishedData.getScore());
-
+                /// All done! :D
+                questionAskerController.finishQuizSessionAndShowStats();
                 return null;
             }
         };
