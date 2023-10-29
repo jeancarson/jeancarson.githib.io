@@ -1,5 +1,6 @@
 package com.ise.patrickandjean.quizapp2.Pages.DifficultyChooser;
 
+import com.ise.patrickandjean.quizapp2.GameModes.RandomlyChosen;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
 
 import com.ise.patrickandjean.quizapp2.Services.UIService;
@@ -24,7 +25,7 @@ public class DifficultyChooserController {
     @FXML
     public Button eliminationButton;
 
-    public void selectModeButtonPressed(ActionEvent event) throws IOException {
+    public void selectModeButtonPressed(ActionEvent event) throws IOException, InterruptedException {
         /// Vars
         String buttonPressedName = ((Button) event.getSource()).getId();
 
@@ -42,7 +43,7 @@ public class DifficultyChooserController {
         }
 
         if (buttonPressedName.equals("randomDrawButton")) {
-            /// do random draw stuff
+            RandomlyChosen.run();
             return;
         }
     }

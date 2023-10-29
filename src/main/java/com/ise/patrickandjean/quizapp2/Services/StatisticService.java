@@ -1,6 +1,9 @@
 package com.ise.patrickandjean.quizapp2.Services;
 
+import com.ise.patrickandjean.quizapp2.BaseClasses.QuestionBank;
+
 import java.text.DecimalFormat;
+
 public class StatisticService {
 
     public static double calculateMean(int[] scores) {

@@ -1,15 +1,14 @@
 package com.ise.patrickandjean.quizapp2.BaseClasses;
 
-import Directory.Question;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-
 public class QuestionBank {
 
-    private final ArrayList<Question> questions = new ArrayList<Question>();{
+    private final ArrayList<Question> questions = new ArrayList<Question>();
+
+    {
 
         questions.add(new Question("Which of the following is NOT a type of processor?", new String[]{"x66", "ARM", "SPARC", "Power PC"}, "Novice", "CompOrg"));
         questions.add(new Question("What is 24 in binary?", new String[]{"11000", "10110", "11101", "00111"}, "Novice", "CompOrg"));
@@ -31,6 +30,7 @@ public class QuestionBank {
         questions.add(new Question("How would you express the following?: {x E R | a < x <= b}", new String[]{"]a, b]", "[a, b]", "]a, b[", "[a, b["}, "Expert", "DiscreteMaths"));
 
     }
+
     static Random random = new Random();
 
     /**
@@ -39,10 +39,10 @@ public class QuestionBank {
      */
     public ArrayList<Question> popQuestionByDifficulty(String difficulty, int count) {
         ArrayList<Question> chosenDifficultyQuestions = new ArrayList<Question>();
-        for (Question question: questions){
-            if (question.getDifficulty().equals(difficulty)){
+        for (Question question : questions) {
+            if (question.getDifficulty().equals(difficulty)) {
                 chosenDifficultyQuestions.add(question);
-                if(chosenDifficultyQuestions.size() >= count){
+                if (chosenDifficultyQuestions.size() >= count) {
                     break;
                 }
             }
@@ -54,90 +54,24 @@ public class QuestionBank {
         return chosenDifficultyQuestions;
     }
 
-
-
-
-    /**
-     * @param shuffledQuestions This takes an array of questions, which has already been shuffled
-     *                          and an index, so  we can cycle through the now random questions as needed
-     * @return the next question in the shuffled array
-     */
-
-    public static Question selectQuestion(Question[] shuffledQuestions, int index){
-        return shuffledQuestions[index];
-    }
-
-
-    /**
-     * @param selectedQuestion This function takes in an instance of the Question class, generated from previous functions
-     * @return The function returns true if the question is answered correctly and false if it is answered incorrectly
-     */
-//    public static boolean askQuestion(Question selectedQuestion){
-//        //We need to shuffle the answers and keep track of where the correct answer is
-//        String[] shuffledAnswers = Arrays.copyOf(selectedQuestion.getAnswers(), 4);
-//        int correctAnswerIndex = 0;
-//        shuffleAnswers(shuffledAnswers, correctAnswerIndex);
-//        System.out.println(selectedQuestion.getQuestion());
-//        System.out.printf("\n1) %s \n2) %s \n3) %s \n4) %s", selectedQuestion.getAnswers()[0],
-//                selectedQuestion.getAnswers()[1], selectedQuestion.getAnswers()[2], selectedQuestion.getAnswers()[3]);
-//        int userAnswer = scanner.nextInt();
-//        if(userAnswer == correctAnswerIndex + 1){
-//            System.out.println("Correct");
-//            return true;}
-//        System.out.println("Incorrect");
-//        return false;
-//
-//    }
-
-
-
-
-
-
-    /**
-     * @param unshuffled This function takes the array of answers and shuffles it randomly
-     * @param correctAnsIndex It takes in the current index of the correct answer, and will update this variable at the end to match the new index of the current answer
-     * @return the shuffled array of answers
-     */
-    public static String[] shuffleAnswers(String[] unshuffled, int correctAnsIndex){
-        String[] shuffled = Arrays.copyOf(unshuffled, unshuffled.length);
-
-        //Fisher-Yeats shuffle method
-
-        for (int i = shuffled.length-1; i > 0; i--){
-            int index = random.nextInt(i+1);
-            String temp = shuffled[i];
-            shuffled[i] = shuffled[index];
-            shuffled[index] = temp;
-        }
-
-        //changing the value of the correctAnsIndex to the new index of the correct answer
-        for(int i = 0; i < shuffled.length; i++){
-            if (shuffled[i].equals( unshuffled[correctAnsIndex])){
-                correctAnsIndex = i;
-            }
-        }
-        return shuffled;
-    }
-
     /**
      * @return The shuffled array
      */
-    public void QuestionBank(){
-        //Fisher-Yeats shuffle method
-        for (int i = questions.size()-1; i > 0; i--){
-            int index = random.nextInt(i+1);
+    public QuestionBank() {
+        for (int i = questions.size() - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
             Question temp = questions.get(i);
-            questions.set(i, questions.get(index)) ;
+            questions.set(i, questions.get(index));
             questions.set(index, temp);
         }
 
     }
+
     public ArrayList<Question> popQuestionRandom(int count) {
         ArrayList<Question> chosenQuestions = new ArrayList<Question>();
-        for (Question question: questions){
+        for (Question question : questions) {
             chosenQuestions.add(question);
-            if(chosenQuestions.size() >= count){
+            if (chosenQuestions.size() >= count) {
                 break;
             }
         }

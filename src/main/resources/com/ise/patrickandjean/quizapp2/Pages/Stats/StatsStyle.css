@@ -1,0 +1,26 @@
+.rounded-box {
+    -fx-padding: 20;
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2;
+    -fx-max-width: 300;
+    -fx-pref-height: 100;
+    -fx-pref-width: 300;
+}
+
+.subtitle {
+    -fx-font-weight: bold;
+    -fx-fill: black;
+    -fx-font-size: 14px;
+}
+
+#scoreText {
+    -fx-font-size: 24px;
+}
+
+#meanValue, #medianValue, #standardDeviationValue,
+#secondMeanValue, #secondMedianValue, #secondStandardDeviationValue {
+    -fx-font-size: 20px;
+}
