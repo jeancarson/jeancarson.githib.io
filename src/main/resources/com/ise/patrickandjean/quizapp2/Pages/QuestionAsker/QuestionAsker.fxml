@@ -15,9 +15,9 @@
         <!-- Top section with timer on left and question number on right using HBox -->
         <top>
             <HBox spacing="20">
-                <Label styleClass="topbar-text" text="0:00"/>
+                <Label fx:id="timertext" styleClass="topbar-text" text="0:00"/>
                 <HBox HBox.hgrow="ALWAYS"/> <!-- This pushes the next items to the end of the HBox -->
-                <Label styleClass="topbar-text" text="1/X"/>
+                <Label fx:id="currentquestiontext" styleClass="topbar-text" text="1/X"/>
             </HBox>
         </top>
 
@@ -27,11 +27,16 @@
                 <Label styleClass="quiz-question"
                        text="Really wrong question right hereee :)"
                        wrapText="true"
+                       fx:id="questiondisplay"
                        alignment="CENTER"/>
-                <Button fx:id="btnA" styleClass="answer-button" text="Answer 1"/>
-                <Button fx:id="btnB" styleClass="answer-button" text="Answer 2"/>
-                <Button fx:id="btnC" styleClass="answer-button" text="Answer 3"/>
-                <Button fx:id="btnD" styleClass="answer-button" text="Answer 4"/>
+                <Button fx:id="btnA" styleClass="answer-button" text="Answer 1" onAction="#answerSelected"
+                        wrapText="true"/>
+                <Button fx:id="btnB" styleClass="answer-button" text="Answer 2" onAction="#answerSelected"
+                        wrapText="true"/>
+                <Button fx:id="btnC" styleClass="answer-button" text="Answer 3" onAction="#answerSelected"
+                        wrapText="true"/>
+                <Button fx:id="btnD" styleClass="answer-button" text="Answer 4" onAction="#answerSelected"
+                        wrapText="true"/>
             </VBox>
         </center>
     </BorderPane>

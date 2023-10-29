@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml">
+    <!-- Rectangle 1 for Score Display -->
+    <HBox alignment="CENTER" styleClass="rounded-box">
+        <VBox alignment="CENTER">
+            <Text text="x/x — xx%" id="scoreText"/>
+            <Text text="Correct Answers" styleClass="subtitle"/>
+        </VBox>
+    </HBox>
+
+    <!-- Rectangle 2 for Mean, Median, Standard Deviation -->
+    <HBox alignment="CENTER" spacing="20" styleClass="rounded-box">
+        <VBox alignment="CENTER">
+            <Text text="xx.xx" id="meanValue"/>
+            <Text text="Mean" styleClass="subtitle"/>
+        </VBox>
+        <VBox alignment="CENTER">
+            <Text text="xx.xx" id="medianValue"/>
+            <Text text="Median" styleClass="subtitle"/>
+        </VBox>
+        <VBox alignment="CENTER">
+            <Text text="xx.xx" id="standardDeviationValue"/>
+            <Text text="Standard Deviation" styleClass="subtitle"/>
+        </VBox>
+    </HBox>
+
+    <!-- Rectangle 3 (similar to Rectangle 2) -->
+    <HBox alignment="CENTER" spacing="20" styleClass="rounded-box">
+        <VBox alignment="CENTER">
+            <Text text="xx.xx" id="secondMeanValue"/>
+            <Text text="Mean" styleClass="subtitle"/>
+        </VBox>
+        <VBox alignment="CENTER">
+            <Text text="xx.xx" id="secondMedianValue"/>
+            <Text text="Median" styleClass="subtitle"/>
+        </VBox>
+        <VBox alignment="CENTER">
+            <Text text="xx.xx" id="secondStandardDeviationValue"/>
+            <Text text="Standard Deviation" styleClass="subtitle"/>
+        </VBox>
+    </HBox>
+</VBox>

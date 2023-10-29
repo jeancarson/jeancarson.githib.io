@@ -11,9 +11,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Optional;
 
 public class UIService {
     private static Stage primaryStage;
+    private static final HashMap<String, Object> storedControllerReferences = new HashMap<>();
 
     private static URL getResource(String relativePath) throws MalformedURLException {
         String fullPath = UIService.class.getResource("").toString();
@@ -22,10 +25,18 @@ public class UIService {
         return new URL(newPath);
     }
 
+    public static Object getController(String name) {
+        return storedControllerReferences.get(name);
+    }
+
     public static void setActiveScene(String name) throws IOException {
         /// Get UI elements + css
-        Parent root = FXMLLoader.load(getResource("/" + name + "/" + name + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(getResource("/" + name + "/" + name + ".fxml"));
+        Parent root = loader.load();
         String resourcePath = getResource("/" + name + "/" + name + "Style.css").toExternalForm();
+
+        /// Store controller for later external access
+        storedControllerReferences.put(name, loader.getController());
 
         /// Update scene
         if (primaryStage.getScene() != null) {

@@ -3,6 +3,7 @@ module com.ise.patrickandjean.quizapp2 {
     requires javafx.fxml;
     requires com.google.gson;
 
+    exports com.ise.patrickandjean.quizapp2.BaseClasses;
 
     opens com.ise.patrickandjean.quizapp2 to javafx.fxml;
     exports com.ise.patrickandjean.quizapp2;
