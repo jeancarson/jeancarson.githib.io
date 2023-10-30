@@ -1,5 +1,7 @@
 package com.ise.patrickandjean.quizapp2.Pages.DifficultyChooser;
 
+import com.ise.patrickandjean.quizapp2.GameModes.Elimination;
+import com.ise.patrickandjean.quizapp2.GameModes.IncreasingDifficulty;
 import com.ise.patrickandjean.quizapp2.GameModes.RandomlyChosen;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
 
@@ -33,12 +35,12 @@ public class DifficultyChooserController {
 
         /// Perform correct action
         if (buttonPressedName.equals("eliminationButton")) {
-            /// do elimination stuff
+            Elimination.run();
             return;
         }
 
         if (buttonPressedName.equals("increasingDifficultyButton")) {
-            /// do increasing diff stuff
+            IncreasingDifficulty.run();
             return;
         }
 

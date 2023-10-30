@@ -9,30 +9,13 @@ import javafx.concurrent.Task;
 import java.util.ArrayList;
 
 public class Elimination {
-//    public static void runEliminationMode() {
-//        QuestionBank QB = new QuestionBank();
-//        boolean anotherRound = true;
-//        int counter = 0;   //this counter allows us to end the game if the user answers all possible questions correctly
-//        while (anotherRound && counter < 18) {
-//            //anotherRound = cont.SetUIQuestion(QB.get(counter));
-//            if (anotherRound) {
-//                counter++;
-//            } else {
-//                //System.out.println("You're out!");
-//                break;
-//            }
-//        }
-//        if (counter == 18) {
-//            //System.out.println("Congrats!!! You got all the questions right");}
-//
-//        }
-//    }
-    private final static int TOTAL_QUESTIONS = 18;
+    public static int MAX_QUESTIONS = 18;
+    public static String SAVE_FILE_INDEX = "eliminationGameHistory";
 
     public static void run() {
         /// Get questions that we'll ask
         QuestionBank QB = new QuestionBank();
-        ArrayList<Question> questionsToAsk = QB.popQuestionRandom(TOTAL_QUESTIONS);
+        ArrayList<Question> questionsToAsk = QB.popQuestionRandom(MAX_QUESTIONS);
 
         /// Start Game loop
         Task<Void> gameTask = new Task<Void>() {
@@ -40,7 +23,7 @@ public class Elimination {
             protected Void call() {
                 /// Start a new quiz session
                 QuestionAskerController questionAskerController = (QuestionAskerController) UIService.getController("QuestionAsker");
-                questionAskerController.startNewQuizSession(TOTAL_QUESTIONS);
+                questionAskerController.startNewQuizSession(MAX_QUESTIONS, "eliminationGameHistory");
 
                 /// Keep asking while we have more questions
                 while (!questionsToAsk.isEmpty()) {
@@ -48,7 +31,10 @@ public class Elimination {
                     Question nextQuestion = questionsToAsk.remove(0);
 
                     /// This yields until the user chooses an answer
-                    questionAskerController.nextQuestion(nextQuestion);
+                    boolean wasCorrect = questionAskerController.nextQuestion(nextQuestion);
+
+                    /// They were wrong! Eliminated!
+                    if (!wasCorrect) break;
                 }
 
                 /// All done! :D

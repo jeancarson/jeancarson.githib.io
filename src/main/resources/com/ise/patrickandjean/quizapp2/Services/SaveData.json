@@ -1,5 +1,110 @@
 {
   "a": {
-    "password": "a"
+    "password": "a",
+    "eliminationGameHistory": [
+      12,
+      12,
+      12,
+      9,
+      18,
+      12,
+      1,
+      4,
+      2
+    ],
+    "increasingDifficultyGameHistory": [
+      6,
+      6,
+      5,
+      4,
+      2,
+      2,
+      1,
+      2,
+      7,
+      8
+    ],
+    "randomlyChosenGameHistory": [
+      5,
+      5,
+      4,
+      6,
+      2,
+      6,
+      6,
+      6,
+      6,
+      6,
+      2,
+      1
+    ]
+  },
+  "b": {
+    "password": "a",
+    "eliminationGameHistory": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "increasingDifficultyGameHistory": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "randomlyChosenGameHistory": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
+  },
+  "c": {
+    "password": "a",
+    "eliminationGameHistory": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "increasingDifficultyGameHistory": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "randomlyChosenGameHistory": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
   }
 }

@@ -9,19 +9,7 @@ import javafx.concurrent.Task;
 import java.util.ArrayList;
 
 public class IncreasingDifficulty {
-//    public static void runIncreasingDifficulty() {
-//        QuestionBank QB = new QuestionBank();
-//        ArrayList<Question> questionsToAsk = new ArrayList<>();
-//        questionsToAsk.addAll(QB.popQuestionByDifficulty("Novice", 2));
-//        questionsToAsk.addAll(QB.popQuestionByDifficulty("Intermediate", 2));
-//        questionsToAsk.addAll(QB.popQuestionByDifficulty("Expert", 2));
-//
-//        while (questionsToAsk.size() > 0) {
-//            // cont.SetUIQuestion(QB.get(0));
-//            // QB.pop(QB.get(0));
-//        }
-//    }
-    private final static int TOTAL_QUESTIONS = 6;
+    public final static int TOTAL_QUESTIONS = 6;
 
     public static void run() {
         /// Get questions that we'll ask
@@ -37,7 +25,7 @@ public class IncreasingDifficulty {
             protected Void call() {
                 /// Start a new quiz session
                 QuestionAskerController questionAskerController = (QuestionAskerController) UIService.getController("QuestionAsker");
-                questionAskerController.startNewQuizSession(TOTAL_QUESTIONS);
+                questionAskerController.startNewQuizSession(TOTAL_QUESTIONS, "increasingDifficultyGameHistory");
 
                 /// Keep asking while we have more questions
                 while (!questionsToAsk.isEmpty()) {

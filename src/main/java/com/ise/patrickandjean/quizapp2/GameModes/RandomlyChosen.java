@@ -9,7 +9,7 @@ import javafx.concurrent.Task;
 import java.util.ArrayList;
 
 public class RandomlyChosen {
-    private final static int TOTAL_QUESTIONS = 6;
+    public final static int TOTAL_QUESTIONS = 6;
 
     public static void run() {
         /// Get questions that we'll ask
@@ -22,7 +22,7 @@ public class RandomlyChosen {
             protected Void call() {
                 /// Start a new quiz session
                 QuestionAskerController questionAskerController = (QuestionAskerController) UIService.getController("QuestionAsker");
-                questionAskerController.startNewQuizSession(TOTAL_QUESTIONS);
+                questionAskerController.startNewQuizSession(TOTAL_QUESTIONS, "randomlyChosenGameHistory");
 
                 /// Keep asking while we have more questions
                 while (!questionsToAsk.isEmpty()) {

@@ -1,5 +1,7 @@
 package com.ise.patrickandjean.quizapp2.BaseClasses;
 
+import com.ise.patrickandjean.quizapp2.Services.SaveService;
+
 public class QuizSession {
     boolean active;
     long gameStartEpoch;
@@ -8,12 +10,16 @@ public class QuizSession {
     int score;
     Question currentQuestion;
 
-    public QuizSession(int maxQuestions) {
+    String saveFileIndex;
+
+    public QuizSession(int maxQuestions, String SAVE_FILE_INDEX) {
         this.active = true;
         this.gameStartEpoch = System.currentTimeMillis();
 
         this.maxQuestions = maxQuestions;
         this.currentQuestionNumber = 0;
+
+        this.saveFileIndex = SAVE_FILE_INDEX;
     }
 
     /// === Score ===
@@ -43,6 +49,7 @@ public class QuizSession {
     }
 
     public void incrementCurrentQuestion() {
+        /// Sanity
         if (this.currentQuestionNumber + 1 > this.maxQuestions) {
             throw new IllegalStateException("CurrentQuestion incrementation would exceed max questions!");
         }
@@ -50,11 +57,11 @@ public class QuizSession {
         this.currentQuestionNumber += 1;
     }
 
-    /// === Misc ===
-    public void endSession() {
-        this.active = false;
+    public String getSaveFileIndex() {
+        return this.saveFileIndex;
     }
 
+    /// === Misc ===
     public long getStartEpoch() {
         return this.gameStartEpoch;
     }
