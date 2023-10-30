@@ -1,11 +1,8 @@
 package com.ise.patrickandjean.quizapp2.Services;
 
-import com.ise.patrickandjean.quizapp2.BaseClasses.QuestionBank;
-
 import java.text.DecimalFormat;
 
 public class StatisticService {
-
     public static double calculateMean(int[] scores) {
         float total = 0;
         for (int score : scores) {
@@ -21,8 +18,8 @@ public class StatisticService {
         int mode = 0;
         for (int score : scores) {
             int count = 0;
-            for (int occurance : scores) {
-                if (occurance == score) {
+            for (int occurence : scores) {
+                if (occurence == score) {
                     count++;
                 }
             }
@@ -34,23 +31,22 @@ public class StatisticService {
         return mode;
     }
 
-    public static void runEliminationMode() {
-        QuestionBank QB = new QuestionBank();
-        boolean anotherRound = true;
-        int counter = 0;   //this counter allows us to end the game if the user answers all possible questions correctly
-        while (anotherRound && counter < 18) {
-            //anotherRound = cont.SetUIQuestion(QB.get(counter));
-            if (anotherRound) {
-                counter++;
-            } else {
-                //System.out.println("You're out!");
-                break;
-            }
-        }
-        if (counter == 18) {
-            //System.out.println("Congrats!!! You got all the questions right");}
+    /// https://stackoverflow.com/questions/58142956/computing-variance-standard-deviation-java
+    public static double calculateStandardDeviation(int[] scores) {
+        /// Vars
+        double sum = 0;
+        double sq_sum = 0;
 
+        /// Calc Sums
+        for (double val : scores) {
+            sum += val;
+            sq_sum += val * val;
         }
+
+        ///
+        double mean = sum / scores.length;
+        double variance = sq_sum / scores.length - mean * mean;
+        return Math.sqrt(variance);
     }
 }
 

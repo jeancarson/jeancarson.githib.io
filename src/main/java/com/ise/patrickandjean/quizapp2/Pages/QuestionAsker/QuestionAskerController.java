@@ -2,6 +2,8 @@ package com.ise.patrickandjean.quizapp2.Pages.QuestionAsker;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
+import com.ise.patrickandjean.quizapp2.Pages.Stats.StatsController;
+import com.ise.patrickandjean.quizapp2.Services.SaveService;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
 
 
@@ -13,13 +15,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
@@ -41,7 +43,9 @@ public class QuestionAskerController {
 
     /// Private
     private QuizSession currentSession;
-    private CompletableFuture<Void> answerChosenSignal;
+    private CompletableFuture<Boolean> answerChosenSignal;
+
+    private boolean answerButtonDebounce = false;
 
     /// Funcs
     private void startTimerUIUpdateLoop() {
@@ -103,15 +107,15 @@ public class QuestionAskerController {
         });
     }
 
-    public void startNewQuizSession(int maxQuestionsAsked) {
+    public void startNewQuizSession(int MAX_QUESTIONS, String SAVE_FILE_INDEX) {
         /// Create a new session, and store it in the quizaskercontroller for now
-        currentSession = new QuizSession(maxQuestionsAsked);
+        currentSession = new QuizSession(MAX_QUESTIONS, SAVE_FILE_INDEX);
 
         /// Start timer update loop
         startTimerUIUpdateLoop();
     }
 
-    public void nextQuestion(Question question) {
+    public boolean nextQuestion(Question question) {
         /// Increment internal counter
         currentSession.incrementCurrentQuestion();
         updateQuestionCounter();
@@ -125,25 +129,41 @@ public class QuestionAskerController {
         /// Wait for an answer
         answerChosenSignal = new CompletableFuture<>();
         try {
-            answerChosenSignal.get();
+            return answerChosenSignal.get();
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public QuizSession finishQuizSessionAndReturn() {
-        /// End session data collection
-        currentSession.endSession();
-
+    public void finishQuizSessionAndShowStats() {
         /// Clear current session
-        QuizSession temp = currentSession;
+        QuizSession savedSessionData = currentSession;
         currentSession = null;
 
-        ///
-        return temp;
+        /// Save game result to file
+        SaveService.addNewGameResult(savedSessionData.getSaveFileIndex(), savedSessionData.getScore());
+
+        /// Show stats!
+        try {
+            /// Show stat scene
+            UIService.setActiveScene("Stats");
+
+            /// Update scene values
+            StatsController statsController = (StatsController) UIService.getController("Stats");
+            statsController.setViewWithSessionData(savedSessionData);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void answerSelected(ActionEvent event) {
+        /// Sanity
+        if (currentSession == null) return;
+
+        /// Button is busy
+        if (answerButtonDebounce) return;
+        answerButtonDebounce = true;
+
         /// Get pressed button
         Button buttonPressed = (Button) event.getSource();
         String selectedAnswer = buttonPressed.getText();
@@ -177,7 +197,8 @@ public class QuestionAskerController {
         /// after giving the person a second to admire the correct answers :D
         PauseTransition pause = new PauseTransition(javafx.util.Duration.seconds(1));
         pause.setOnFinished(e -> {
-            answerChosenSignal.complete(null);
+            answerButtonDebounce = false;
+            answerChosenSignal.complete(selectedCorrectButton);
         });
         pause.play();
     }

@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Map;
 
 
 public class SaveService {
@@ -31,7 +33,7 @@ public class SaveService {
     /**
      * Writes the current contents of allSaves to SaveData.json
      */
-    public static boolean writeSaveDataToFile(String jsonDataAsString) {
+    private static boolean writeSaveDataToFile(String jsonDataAsString) {
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(SAVE_DATA_RELATIVE_PATH_STRING))) {
             fileWriter.write(jsonDataAsString);
         } catch (IOException e) {
@@ -89,6 +91,11 @@ public class SaveService {
         JsonObject newSaveData = new JsonObject();
         newSaveData.addProperty("password", password);
 
+        /// Add empty game data arrays
+        newSaveData.add("eliminationGameHistory", new JsonArray());
+        newSaveData.add("increasingDifficultyGameHistory", new JsonArray());
+        newSaveData.add("randomlyChosenGameHistory", new JsonArray());
+
         /// Add this save to the existing data object
         allSaves.add(username, newSaveData);
         writeSaveDataToFile(allSaves.toString());
@@ -114,6 +121,63 @@ public class SaveService {
 
         ///
         return true;
+    }
+
+    public static void addNewGameResult(String saveFileIndex, int score) {
+        /// Sanity
+        assertAuthStateIs(true);
+
+        /// Get current save, and add the new result
+        JsonObject currentSave = allSaves.get(currentlyAuthenticatedUser).getAsJsonObject();
+        JsonArray allGamesOfThisTypeData = currentSave.get(saveFileIndex).getAsJsonArray();
+        allGamesOfThisTypeData.add(score);
+
+        /// Then update the file
+        writeSaveDataToFile(allSaves.toString());
+    }
+
+    public static int[] getAllResultsForCurrentUserInGameMode(String saveKeyIndex) {
+        /// Sanity
+        assertAuthStateIs(true);
+
+        /// Get current save for this gamemode
+        JsonObject currentSave = allSaves.get(currentlyAuthenticatedUser).getAsJsonObject();
+        JsonArray allScores = currentSave.get(saveKeyIndex).getAsJsonArray();
+
+        /// int[] intArray = gson.fromJson(jsonArray, int[].class);
+        return new Gson().fromJson(allScores, int[].class);
+    }
+
+    public static int[] getAllResultsForGameMode(String saveKeyIndex) {
+        /// Sanity
+        assertAuthStateIs(true);
+
+        /// Vars
+        ArrayList<Integer> mergedList = new ArrayList<>();
+
+        /// Loop through all saves, and dump data into merge
+        /// Ignore the current user's data
+        for (Map.Entry<String, JsonElement> entry : allSaves.entrySet()) {
+            /// Ignore current user
+            String username = entry.getKey();
+            if (username.equals(currentlyAuthenticatedUser)) continue;
+
+            /// Ok - dump data in
+            JsonObject userSave = entry.getValue().getAsJsonObject();
+            JsonArray scores = userSave.getAsJsonArray(saveKeyIndex);
+            for (JsonElement element : scores) {
+                mergedList.add(element.getAsInt());
+            }
+        }
+
+        /// Convert from ArrayList to int[]
+        int[] scores = new int[mergedList.size()];
+        for (int idx = 0; idx < mergedList.size(); idx++) {
+            scores[idx] = mergedList.get(idx);
+        }
+
+        ///
+        return scores;
     }
 
     /// Load save file into memory :D
