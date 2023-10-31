@@ -46,8 +46,8 @@
 }
 
 #scoreText,
-#myMeanVal, #myModeVal, #mySDVal,
-#globalMeanVal, #globalModeVal, #globalSDVal {
+#myMeanVal, #myMedianVal, #mySDVal,
+#globalMeanVal, #globalMedianVal, #globalSDVal {
     -fx-font-weight: bold; /* making the numbers bold */
     -fx-font-size: 20px;
     -fx-fill: white;

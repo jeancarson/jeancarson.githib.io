@@ -27,8 +27,8 @@
                     <Text text="Mean" styleClass="subtitle"/>
                 </VBox>
                 <VBox alignment="CENTER" spacing="10">
-                    <Text text="xx.xx" fx:id="myModeVal"/>
-                    <Text text="Mode" styleClass="subtitle"/>
+                    <Text text="xx.xx" fx:id="myMedianVal"/>
+                    <Text text="Median" styleClass="subtitle"/>
                 </VBox>
                 <VBox alignment="CENTER" spacing="10">
                     <Text text="xx.xx" fx:id="mySDVal"/>
@@ -46,8 +46,8 @@
                     <Text text="Mean" styleClass="subtitle"/>
                 </VBox>
                 <VBox alignment="CENTER" spacing="10">
-                    <Text text="xx.xx" fx:id="globalModeVal"/>
-                    <Text text="Mode" styleClass="subtitle"/>
+                    <Text text="xx.xx" fx:id="globalMedianVal"/>
+                    <Text text="Median" styleClass="subtitle"/>
                 </VBox>
                 <VBox alignment="CENTER" spacing="10">
                     <Text text="xx.xx" fx:id="globalSDVal"/>
@@ -57,5 +57,5 @@
         </VBox>
     </VBox>
 
-    <Button fx:id="homeButton" text="Return Home" styleClass="home-button" onAction="#returnHomeButtonPressed"/>
+    <Button text="Return Home" styleClass="home-button" onAction="#returnHomeButtonPressed"/>
 </VBox>

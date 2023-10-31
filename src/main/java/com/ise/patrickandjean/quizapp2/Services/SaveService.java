@@ -156,13 +156,7 @@ public class SaveService {
         ArrayList<Integer> mergedList = new ArrayList<>();
 
         /// Loop through all saves, and dump data into merge
-        /// Ignore the current user's data
         for (Map.Entry<String, JsonElement> entry : allSaves.entrySet()) {
-            /// Ignore current user
-            String username = entry.getKey();
-            if (username.equals(currentlyAuthenticatedUser)) continue;
-
-            /// Ok - dump data in
             JsonObject userSave = entry.getValue().getAsJsonObject();
             JsonArray scores = userSave.getAsJsonArray(saveKeyIndex);
             for (JsonElement element : scores) {

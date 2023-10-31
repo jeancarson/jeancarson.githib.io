@@ -4,7 +4,6 @@ import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
 import com.ise.patrickandjean.quizapp2.Services.StatisticService;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
-import com.ise.patrickandjean.quizapp2.Services.UtilityService;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
@@ -19,25 +18,25 @@ public class StatsController {
     @FXML
     private Text myMeanVal;
     @FXML
-    private Text myModeVal;
+    private Text myMedianVal;
     @FXML
     private Text mySDVal;
     @FXML
     private Text globalMeanVal;
     @FXML
-    private Text globalModeVal;
+    private Text globalMedianVal;
     @FXML
     private Text globalSDVal;
 
-    private void updateScoreDisplay(int[] allScores, Text globalMeanVal, Text globalModeVal, Text globalSDVal) {
-        double globalMean = StatisticService.calculateMean(allScores);
-        globalMeanVal.setText(Double.toString(globalMean));
+    private void updateScoreDisplay(int[] scores, Text meanLabel, Text medianLabel, Text sdLabel) {
+        double mean = StatisticService.calculateMean(scores);
+        meanLabel.setText(Double.toString(mean));
 
-        int globalMode = StatisticService.calculateMode(allScores);
-        globalModeVal.setText(Integer.toString(globalMode));
+        double median = StatisticService.calculateMedian(scores);
+        medianLabel.setText(Double.toString(median));
 
-        double globalSD = StatisticService.calculateStandardDeviation(allScores);
-        globalSDVal.setText(String.format("%.2f", globalSD));
+        double SD = StatisticService.calculateStandardDeviation(scores);
+        sdLabel.setText(String.format("%.2f", SD));
     }
 
     public void setViewWithSessionData(QuizSession session) {
@@ -56,11 +55,11 @@ public class StatsController {
 
         /// Set stats of all of this user's games of this game mode
         int[] currentUserScores = SaveService.getAllResultsForCurrentUserInGameMode(session.getSaveFileIndex());
-        updateScoreDisplay(currentUserScores, myMeanVal, myModeVal, mySDVal);
+        updateScoreDisplay(currentUserScores, myMeanVal, myMedianVal, mySDVal);
 
         /// Set stats of all games ever across this game mode
         int[] allScores = SaveService.getAllResultsForGameMode(session.getSaveFileIndex());
-        updateScoreDisplay(allScores, globalMeanVal, globalModeVal, globalSDVal);
+        updateScoreDisplay(allScores, globalMeanVal, globalMedianVal, globalSDVal);
     }
 
     public void returnHomeButtonPressed() {

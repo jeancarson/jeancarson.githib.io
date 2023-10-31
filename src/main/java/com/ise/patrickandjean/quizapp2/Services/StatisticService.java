@@ -1,6 +1,7 @@
 package com.ise.patrickandjean.quizapp2.Services;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class StatisticService {
     public static double calculateMean(int[] scores) {
@@ -13,22 +14,20 @@ public class StatisticService {
         return Double.parseDouble(df.format(total / scores.length));
     }
 
-    public static int calculateMode(int[] scores) {
-        int max = 0;
-        int mode = 0;
-        for (int score : scores) {
-            int count = 0;
-            for (int occurence : scores) {
-                if (occurence == score) {
-                    count++;
-                }
-            }
-            if (count >= max) {
-                max = count;
-                mode = score;
-            }
+    public static double calculateMedian(int[] scores) {
+        /// Sort the scores array
+        Arrays.sort(scores);
+
+        /// Calculate median
+        double median;
+        if (scores.length % 2 == 0) {
+            median = ((double) scores[scores.length / 2] + (double) scores[scores.length / 2 - 1]) / 2;
+        } else {
+            median = scores[scores.length / 2];
         }
-        return mode;
+
+        ///
+        return median;
     }
 
     /// https://stackoverflow.com/questions/58142956/computing-variance-standard-deviation-java
