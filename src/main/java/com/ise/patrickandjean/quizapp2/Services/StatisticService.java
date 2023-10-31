@@ -1,5 +1,6 @@
 package com.ise.patrickandjean.quizapp2.Services;
 
+//Used to give the mean as a decimal
 import java.text.DecimalFormat;
 
 public class StatisticService {

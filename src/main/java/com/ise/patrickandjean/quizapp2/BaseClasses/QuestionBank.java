@@ -56,6 +56,7 @@ public class QuestionBank {
 
     /**
      * @return The shuffled array
+     * Fischer Yeats shuffle method
      */
     public QuestionBank() {
         for (int i = questions.size() - 1; i > 0; i--) {
