@@ -20,6 +20,10 @@ public class StatisticService {
     }
 
 
+    /**
+     * @param scores An array of the user scores
+     * @return the median
+     */
     public static double calculateMedian(int[] scores) {
         /// Sort the scores array
         Arrays.sort(scores);
