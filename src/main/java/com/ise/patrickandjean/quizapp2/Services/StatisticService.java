@@ -1,9 +1,14 @@
 package com.ise.patrickandjean.quizapp2.Services;
 
+//Used to give the mean as a decimal
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class StatisticService {
+    /**
+     * @param scores The array of scores, for a particular game mode, either from jsut a particular user or all users
+     * @return the mean of all the scores passed in
+     */
     public static double calculateMean(int[] scores) {
         float total = 0;
         for (int score : scores) {
@@ -13,6 +18,7 @@ public class StatisticService {
         DecimalFormat df = new DecimalFormat("#.00");
         return Double.parseDouble(df.format(total / scores.length));
     }
+
 
     public static double calculateMedian(int[] scores) {
         /// Sort the scores array
@@ -31,6 +37,8 @@ public class StatisticService {
     }
 
     /// https://stackoverflow.com/questions/58142956/computing-variance-standard-deviation-java
+    ///This function is an altered version of one I found online at the link above, I shortened it by using the calculate mean
+    ///function I already made.
     public static double calculateStandardDeviation(int[] scores) {
         /// Vars
         double sum = 0;
@@ -42,8 +50,8 @@ public class StatisticService {
             sq_sum += val * val;
         }
 
-        ///
-        double mean = sum / scores.length;
+        ///Using mean method already defined
+        double mean = calculateMean(scores);
         double variance = sq_sum / scores.length - mean * mean;
         return Math.sqrt(variance);
     }
