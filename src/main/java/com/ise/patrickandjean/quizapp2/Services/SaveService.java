@@ -18,7 +18,8 @@ public class SaveService {
     /**
      * The location of SaveData - relative to Services/SaveService
      */
-    private static final String SAVE_DATA_RELATIVE_PATH_STRING = SaveService.class.getResource("SaveData.json").getPath().substring(1);
+    //private static final String SAVE_DATA_RELATIVE_PATH_STRING = SaveService.class.getResource("SaveData.json").getPath().substring(1);
+    private static final String SAVE_DATA_RELATIVE_PATH_STRING = "SaveData.json";
 
     /// Variables
     /**
