@@ -50,7 +50,8 @@ public class QuestionAskerController {
     /// Funcs
     private void startTimerUIUpdateLoop() {
         Executors.newSingleThreadExecutor().execute(() -> {
-            while (true) {
+            Duration duration = Duration.ofSeconds((long) (60));
+            while (duration.compareTo(Duration.ZERO) > 0) {
                 /// Game over - don't need to update timer anymore
                 if (currentSession == null || !currentSession.isActive()) {
                     break;
@@ -58,7 +59,7 @@ public class QuestionAskerController {
 
                 /// Vars
                 double secondsSinceQuizStart = Math.floor((double) (System.currentTimeMillis() - currentSession.getStartEpoch()) / 1000);
-                Duration duration = Duration.ofSeconds((long) secondsSinceQuizStart);
+                duration = Duration.ofSeconds((long) (4- secondsSinceQuizStart));
 
                 /// Update timer text
                 /// Must be in a run later to avoid "Not on FX application thread" error
@@ -75,6 +76,7 @@ public class QuestionAskerController {
                     throw new RuntimeException(e);
                 }
             }
+            //break to end of game screen.
         });
     }
 
