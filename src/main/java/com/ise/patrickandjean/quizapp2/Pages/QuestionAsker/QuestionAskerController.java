@@ -60,6 +60,8 @@ public class QuestionAskerController {
                 double secondsSinceQuizStart = Math.floor((double) (System.currentTimeMillis() - currentSession.getStartEpoch()) / 1000);
                 Duration duration = Duration.ofSeconds((long) secondsSinceQuizStart);
 
+
+                //  THIS WILL BE CHANGED TO COUNT DOWN FROM 1 MIN AND KICK YOU OUT
                 /// Update timer text
                 /// Must be in a run later to avoid "Not on FX application thread" error
                 /// Because you can only edit scene objects at runtime from their thread?!

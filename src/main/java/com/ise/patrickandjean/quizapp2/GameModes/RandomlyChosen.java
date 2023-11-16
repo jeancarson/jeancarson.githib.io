@@ -8,10 +8,10 @@ import javafx.concurrent.Task;
 
 import java.util.ArrayList;
 
-public class RandomlyChosen {
+public class RandomlyChosen extends GameMode {
     public final static int TOTAL_QUESTIONS = 6;
-
-    public static void run() {
+    @Override
+    public void run() {
         /// Get questions that we'll ask
         QuestionBank QB = new QuestionBank();
         ArrayList<Question> questionsToAsk = QB.popQuestionRandom(TOTAL_QUESTIONS);

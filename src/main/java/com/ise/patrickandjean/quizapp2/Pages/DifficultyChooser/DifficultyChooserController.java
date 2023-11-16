@@ -35,17 +35,20 @@ public class DifficultyChooserController {
 
         /// Perform correct action
         if (buttonPressedName.equals("eliminationButton")) {
-            Elimination.run();
+            Elimination eliminationGame = new Elimination();
+            eliminationGame.run();
             return;
         }
 
         if (buttonPressedName.equals("increasingDifficultyButton")) {
-            IncreasingDifficulty.run();
+            IncreasingDifficulty increasingDifficultyGame = new IncreasingDifficulty();
+            increasingDifficultyGame.run();
             return;
         }
 
         if (buttonPressedName.equals("randomDrawButton")) {
-            RandomlyChosen.run();
+            RandomlyChosen randomlyChosenGame = new RandomlyChosen();
+            randomlyChosenGame.run();
             return;
         }
     }
