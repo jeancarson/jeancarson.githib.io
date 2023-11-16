@@ -2,12 +2,11 @@ package com.ise.patrickandjean.quizapp2.Pages.QuestionAsker;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
-import com.ise.patrickandjean.quizapp2.Pages.Stats.StatsController;
+import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.QsOver;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
 
 
-import com.ise.patrickandjean.quizapp2.Services.UtilityService;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -77,6 +76,7 @@ public class QuestionAskerController {
                 }
             }
             //break to end of game screen.
+            Platform.runLater(this::finishQuizSessionAndShowStats);
         });
     }
 
@@ -151,8 +151,8 @@ public class QuestionAskerController {
             UIService.setActiveScene("Stats");
 
             /// Update scene values
-            StatsController statsController = (StatsController) UIService.getController("Stats");
-            statsController.setViewWithSessionData(savedSessionData);
+            QsOver qsOver = (QsOver) UIService.getController("Stats");
+            qsOver.setViewWithSessionData(savedSessionData);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
