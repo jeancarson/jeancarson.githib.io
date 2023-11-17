@@ -77,6 +77,7 @@ public class QuestionAskerController {
                 }
             }
             //break to end of game screen.
+            Platform.runLater(this::finishQuizSessionAndShowStats);
         });
     }
 
