@@ -17,6 +17,6 @@ module com.ise.patrickandjean.quizapp2 {
     exports com.ise.patrickandjean.quizapp2.Pages.QuestionAsker;
     opens com.ise.patrickandjean.quizapp2.Pages.QuestionAsker to javafx.fxml;
 
-    exports com.ise.patrickandjean.quizapp2.Pages.Stats;
-    opens com.ise.patrickandjean.quizapp2.Pages.Stats to javafx.fxml;
+    exports com.ise.patrickandjean.quizapp2.Pages.EndGamePages;
+    opens com.ise.patrickandjean.quizapp2.Pages.EndGamePages to javafx.fxml;
 }

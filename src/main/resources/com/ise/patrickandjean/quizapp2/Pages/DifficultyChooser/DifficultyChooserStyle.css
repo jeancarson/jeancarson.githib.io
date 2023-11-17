@@ -1,11 +1,11 @@
 .root {
-    -fx-background-color: #1A2433;
+    -fx-background-color: #23001E;
 }
 
 .bounding-box {
-    -fx-background-color: #2C3E50;
+    -fx-background-color: #08415C;
     -fx-background-radius: 20px;
-    -fx-border-color: #2C3E50;
+    -fx-border-color: #FBB13C;
     -fx-border-radius: 20px;
     -fx-max-width: 680px;
     -fx-padding: 20px;
@@ -30,36 +30,36 @@
 }
 
 .random-draw-button {
-    -fx-background-color: #3498db;  /* Blue */
+    -fx-background-color: #A93F55;  /* Blue */
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-padding: 10px 20px;
 }
 
 .random-draw-button:hover {
-    -fx-background-color: #2980b9; /* Darker Blue */
+    -fx-background-color: #92828D;
 }
 
 .increasing-difficulty-button {
-    -fx-background-color: #e74c3c;  /* Red */
+    -fx-background-color: #A93F55;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-padding: 10px 20px;
 }
 
 .increasing-difficulty-button:hover {
-    -fx-background-color: #c0392b; /* Darker Red */
+    -fx-background-color: #92828D;
 }
 
 .elimination-button {
-    -fx-background-color: #2ecc71;  /* Green */
+    -fx-background-color: #A93F55;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-padding: 10px 20px;
 }
 
 .elimination-button:hover {
-    -fx-background-color: #27ae60; /* Darker Green */
+    -fx-background-color: #92828D;
 }
 
 .logo {
