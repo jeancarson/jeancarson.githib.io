@@ -32,9 +32,10 @@ public class DifficultyChooserController {
         String buttonPressedName = ((Button) event.getSource()).getId();
 
         UIService.setActiveScene("QuestionAsker");
-
+        // GameMode gm = new GameMode();
         /// Perform correct action
         if (buttonPressedName.equals("eliminationButton")) {
+            // gm = new Elimination();
             Elimination eliminationGame = new Elimination();
             eliminationGame.run();
             return;
