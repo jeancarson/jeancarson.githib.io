@@ -78,7 +78,8 @@ public class QuestionAskerController {
                 }
             }
             //break to end of game screen.
-            Platform.runLater(() -> finishQuizSessionAndShowStats("TimeUp"));
+          Platform.runLater(() -> finishQuizSessionAndShowStats("TimeUp"));
+
         });
     }
 
