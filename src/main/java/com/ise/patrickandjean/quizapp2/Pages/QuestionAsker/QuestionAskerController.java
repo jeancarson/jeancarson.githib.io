@@ -2,6 +2,7 @@ package com.ise.patrickandjean.quizapp2.Pages.QuestionAsker;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
+import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.EndGamePage;
 import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.QsOver;
 import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.TimeUp;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
@@ -149,11 +150,11 @@ public class QuestionAskerController {
         /// Show stats!
         try {
             /// Show stat scene
-            UIService.setActiveScene("scene");
+            UIService.setActiveScene(scene);
 
             /// Update scene values
-            QsOver qsOver = (QsOver) UIService.getController("scene");
-            qsOver.setViewWithSessionData(savedSessionData);
+            EndGamePage endScene = (EndGamePage) UIService.getController(scene);
+            endScene.setViewWithSessionData(savedSessionData);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
