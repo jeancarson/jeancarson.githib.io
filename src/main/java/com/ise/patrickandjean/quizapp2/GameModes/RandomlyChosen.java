@@ -34,7 +34,7 @@ public class RandomlyChosen {
                 }
 
                 /// All done! :D
-                questionAskerController.finishQuizSessionAndShowStats();
+                questionAskerController.finishQuizSessionAndShowStats("QsOver");
                 return null;
             }
         };

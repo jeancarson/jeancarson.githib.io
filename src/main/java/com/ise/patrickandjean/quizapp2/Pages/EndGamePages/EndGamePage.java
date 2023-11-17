@@ -40,8 +40,6 @@ public abstract class EndGamePage {
     }
 
     public void setViewWithSessionData(QuizSession session) {
-        /// Update main title
-        mainTitle.setText(String.format("Well done, %s!", SaveService.getCurrentUser()));
 
         /// Set stats of recent game
         scoreText.setText(

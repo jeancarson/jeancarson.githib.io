@@ -37,7 +37,7 @@ public class IncreasingDifficulty {
                 }
 
                 /// All done! :D
-                questionAskerController.finishQuizSessionAndShowStats();
+                questionAskerController.finishQuizSessionAndShowStats("QsOver");
                 return null;
             }
         };
