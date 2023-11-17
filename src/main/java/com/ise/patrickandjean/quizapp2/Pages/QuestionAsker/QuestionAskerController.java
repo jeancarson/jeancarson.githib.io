@@ -60,7 +60,7 @@ public class QuestionAskerController {
 
                 /// Vars
                 double secondsSinceQuizStart = Math.floor((double) (System.currentTimeMillis() - currentSession.getStartEpoch()) / 1000);
-                duration = Duration.ofSeconds((long) (4- secondsSinceQuizStart));
+                duration = Duration.ofSeconds((long) (60- secondsSinceQuizStart));
 
 
                 //  THIS WILL BE CHANGED TO COUNT DOWN FROM 1 MIN AND KICK YOU OUT
