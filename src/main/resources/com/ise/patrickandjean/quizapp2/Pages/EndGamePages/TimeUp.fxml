@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ise.patrickandjean.quizapp2.Pages.EndGamePages.TimeUp">
+    <VBox alignment="CENTER" spacing="20" styleClass="outer-rounded-box">
+        <!-- Title "Well done, user!" -->
+        <Text text="Time Up, Hard luck user!" fx:id="mainTitle"/>
+
+        <!-- Your Last Game Rectangle -->
+        <VBox alignment="CENTER" spacing="10" styleClass="rounded-box">
+            <Text text="Your Last Game" styleClass="rect-title"/>
+            <VBox alignment="CENTER" spacing="10">
+                <Text text="x/x — xx%" fx:id="scoreText"/>
+                <Text text="Correct Answers" styleClass="subtitle"/>
+            </VBox>
+        </VBox>
+
+        <!-- Your Average Performance Rectangle -->
+        <VBox alignment="CENTER" spacing="10" styleClass="rounded-box">
+            <Text text="Your Average Performance" styleClass="rect-title"/>
+            <HBox alignment="CENTER" spacing="20">
+                <VBox alignment="CENTER" spacing="10">
+                    <Text text="xx.xx" fx:id="myMeanVal"/>
+                    <Text text="Mean" styleClass="subtitle"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10">
+                    <Text text="xx.xx" fx:id="myMedianVal"/>
+                    <Text text="Median" styleClass="subtitle"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10">
+                    <Text text="xx.xx" fx:id="mySDVal"/>
+                    <Text text="SD" styleClass="subtitle"/>
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <!-- Global Average Performance Rectangle -->
+        <VBox alignment="CENTER" spacing="10" styleClass="rounded-box">
+            <Text text="Global Average Performance" styleClass="rect-title"/>
+            <HBox alignment="CENTER" spacing="20">
+                <VBox alignment="CENTER" spacing="10">
+                    <Text text="xx.xx" fx:id="globalMeanVal"/>
+                    <Text text="Mean" styleClass="subtitle"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10">
+                    <Text text="xx.xx" fx:id="globalMedianVal"/>
+                    <Text text="Median" styleClass="subtitle"/>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10">
+                    <Text text="xx.xx" fx:id="globalSDVal"/>
+                    <Text text="SD" styleClass="subtitle"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <Button text="Return Home" styleClass="home-button" onAction="#returnHomeButtonPressed"/>
+</VBox>
