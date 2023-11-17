@@ -36,20 +36,19 @@ public class DifficultyChooserController {
 
         // GameMode gm = new GameMode();cant do this bc gamemode is an abstract class and I'd like to keep it like that
         /// Perform correct action
-        if (buttonPressedName.equals("eliminationButton")) {
-            GameMode gm = new Elimination();
-            return;
+        GameMode gm = null;
+        switch(buttonPressedName){
+            case "eliminationButton":
+                gm = new Elimination();
+                break;
+            case "increasingDifficultyButton":
+                gm = new IncreasingDifficulty();
+                break;
+            case "randomDrawButton":
+                gm = new RandomlyChosen();
+                break;
         }
-
-        if (buttonPressedName.equals("increasingDifficultyButton")) {
-            GameMode gm = new IncreasingDifficulty();
-            return;
-        }
-
-        if (buttonPressedName.equals("randomDrawButton")) {
-            GameMode gm = new RandomlyChosen();
-            return;
-        }
+        assert gm != null;
         gm.run();
     }
 
