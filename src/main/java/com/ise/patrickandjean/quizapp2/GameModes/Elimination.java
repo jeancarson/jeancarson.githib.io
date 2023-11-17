@@ -8,11 +8,11 @@ import javafx.concurrent.Task;
 
 import java.util.ArrayList;
 
-public class Elimination {
+public class Elimination extends GameMode {
     public static int MAX_QUESTIONS = 18;
     public static String SAVE_FILE_INDEX = "eliminationGameHistory";
-
-    public static void run() {
+    @Override
+    public void run() {
         /// Get questions that we'll ask
         QuestionBank QB = new QuestionBank();
         ArrayList<Question> questionsToAsk = QB.popQuestionRandom(MAX_QUESTIONS);

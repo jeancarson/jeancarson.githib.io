@@ -1,6 +1,7 @@
 package com.ise.patrickandjean.quizapp2.Pages.DifficultyChooser;
 
 import com.ise.patrickandjean.quizapp2.GameModes.Elimination;
+import com.ise.patrickandjean.quizapp2.GameModes.GameMode;
 import com.ise.patrickandjean.quizapp2.GameModes.IncreasingDifficulty;
 import com.ise.patrickandjean.quizapp2.GameModes.RandomlyChosen;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
@@ -33,21 +34,22 @@ public class DifficultyChooserController {
 
         UIService.setActiveScene("QuestionAsker");
 
+        // GameMode gm = new GameMode();cant do this bc gamemode is an abstract class and I'd like to keep it like that
         /// Perform correct action
-        if (buttonPressedName.equals("eliminationButton")) {
-            Elimination.run();
-            return;
+        GameMode gm = null;
+        switch(buttonPressedName){
+            case "eliminationButton":
+                gm = new Elimination();
+                break;
+            case "increasingDifficultyButton":
+                gm = new IncreasingDifficulty();
+                break;
+            case "randomDrawButton":
+                gm = new RandomlyChosen();
+                break;
         }
-
-        if (buttonPressedName.equals("increasingDifficultyButton")) {
-            IncreasingDifficulty.run();
-            return;
-        }
-
-        if (buttonPressedName.equals("randomDrawButton")) {
-            RandomlyChosen.run();
-            return;
-        }
+        assert gm != null;
+        gm.run();
     }
 
     public void initialize() {
