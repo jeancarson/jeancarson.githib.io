@@ -1,11 +1,11 @@
 .root {
-    -fx-background-color: #1A2433;
+    -fx-background-color: #23001E;
 }
 
 .bounding-box-question {
-    -fx-background-color: #2C3E50;
+    -fx-background-color: #08415C;
     -fx-background-radius: 15px;
-    -fx-border-color: #2C3E50;
+    -fx-border-color: #FBB13C;
     -fx-border-radius: 15px;
     -fx-max-width: 450px;
     -fx-max-height: 500px;

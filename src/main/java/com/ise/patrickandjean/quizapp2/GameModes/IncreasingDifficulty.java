@@ -37,7 +37,7 @@ public class IncreasingDifficulty extends GameMode {
                 }
 
                 /// All done! :D
-                questionAskerController.finishQuizSessionAndShowStats();
+                questionAskerController.finishQuizSessionAndShowStats("QsOver");
                 return null;
             }
         };

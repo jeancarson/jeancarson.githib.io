@@ -28,12 +28,12 @@ public class LoginController {
     private void displayError(String text) {
         authButtonBusy = true;
         /// Update color to red
-        authButton.setStyle("-fx-background-color: #FF6666;");
+        authButton.setStyle("-fx-background-color: #23001E;");
         authButton.setText(text);
 
         PauseTransition resetTransition = new PauseTransition(Duration.seconds(1));
         resetTransition.setOnFinished(e -> {
-            authButton.setStyle("-fx-background-color: #50C878;");
+            authButton.setStyle("-fx-background-color: #A93F55;");
             updateSignInButtonText();
             authButtonBusy = false;
         });

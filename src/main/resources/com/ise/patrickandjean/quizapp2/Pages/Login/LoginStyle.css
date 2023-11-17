@@ -1,11 +1,11 @@
 .root {
-    -fx-background-color: #1A2433;
+    -fx-background-color: #23001E;
 }
 
 .bounding-box {
-    -fx-background-color: #2C3E50;
+    -fx-background-color: #08415C;
     -fx-background-radius: 15px;
-    -fx-border-color: #2C3E50;
+    -fx-border-color: #FBB13C;
     -fx-border-radius: 15px;
     -fx-max-width: 350px;
     -fx-max-height: 350px;
@@ -51,17 +51,17 @@
     -fx-padding: 5 10;
     -fx-border-radius: 15px;
     -fx-background-radius: 16px;
-    -fx-border-color: #3B475E;
+    -fx-border-color: #FBB13C;
     -fx-border-width: 1;
 }
 
 .text-input:focused {
     -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
-    -fx-border-color: #50C878;
+    -fx-border-color: #FBB13C;
 }
 
 .auth-button {
-    -fx-background-color: #50C878;
+    -fx-background-color: #FBB13C;
     -fx-text-fill: white;
     -fx-font-size: 18;
     -fx-border-radius: 10px;
@@ -70,7 +70,7 @@
 }
 
 .auth-button:hover {
-    -fx-background-color: #40A768;
+    -fx-background-color: #A93F55;
 }
 
 .outer-rectangle {

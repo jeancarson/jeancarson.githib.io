@@ -1,4 +1,4 @@
-package com.ise.patrickandjean.quizapp2.Pages.Stats;
+package com.ise.patrickandjean.quizapp2.Pages.EndGamePages;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
@@ -9,26 +9,26 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class StatsController {
+public abstract class EndGamePage {
     /// Get all FXML objects
     @FXML
-    private Text mainTitle;
+    protected Text mainTitle;
     @FXML
-    private Text scoreText;
+    protected Text scoreText;
     @FXML
-    private Text myMeanVal;
+    protected Text myMeanVal;
     @FXML
-    private Text myMedianVal;
+    protected Text myMedianVal;
     @FXML
-    private Text mySDVal;
+    protected Text mySDVal;
     @FXML
-    private Text globalMeanVal;
+    protected Text globalMeanVal;
     @FXML
-    private Text globalMedianVal;
+    protected Text globalMedianVal;
     @FXML
-    private Text globalSDVal;
+    protected Text globalSDVal;
 
-    private void updateScoreDisplay(int[] scores, Text meanLabel, Text medianLabel, Text sdLabel) {
+    protected void updateScoreDisplay(int[] scores, Text meanLabel, Text medianLabel, Text sdLabel) {
         double mean = StatisticService.calculateMean(scores);
         meanLabel.setText(Double.toString(mean));
 
@@ -40,8 +40,6 @@ public class StatsController {
     }
 
     public void setViewWithSessionData(QuizSession session) {
-        /// Update main title
-        mainTitle.setText(String.format("Well done, %s!", SaveService.getCurrentUser()));
 
         /// Set stats of recent game
         scoreText.setText(

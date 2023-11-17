@@ -2,12 +2,13 @@ package com.ise.patrickandjean.quizapp2.Pages.QuestionAsker;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.QuizSession;
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
-import com.ise.patrickandjean.quizapp2.Pages.Stats.StatsController;
+import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.EndGamePage;
+import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.QsOver;
+import com.ise.patrickandjean.quizapp2.Pages.EndGamePages.TimeUp;
 import com.ise.patrickandjean.quizapp2.Services.SaveService;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
 
 
-import com.ise.patrickandjean.quizapp2.Services.UtilityService;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -50,7 +51,8 @@ public class QuestionAskerController {
     /// Funcs
     private void startTimerUIUpdateLoop() {
         Executors.newSingleThreadExecutor().execute(() -> {
-            while (true) {
+            Duration duration = Duration.ofSeconds((long) (60));
+            while (duration.compareTo(Duration.ZERO) > 0) {
                 /// Game over - don't need to update timer anymore
                 if (currentSession == null || !currentSession.isActive()) {
                     break;
@@ -58,7 +60,7 @@ public class QuestionAskerController {
 
                 /// Vars
                 double secondsSinceQuizStart = Math.floor((double) (System.currentTimeMillis() - currentSession.getStartEpoch()) / 1000);
-                Duration duration = Duration.ofSeconds((long) secondsSinceQuizStart);
+                duration = Duration.ofSeconds((long) (4- secondsSinceQuizStart));
 
 
                 //  THIS WILL BE CHANGED TO COUNT DOWN FROM 1 MIN AND KICK YOU OUT
@@ -77,6 +79,9 @@ public class QuestionAskerController {
                     throw new RuntimeException(e);
                 }
             }
+            //break to end of game screen.
+          Platform.runLater(() -> finishQuizSessionAndShowStats("TimeUp"));
+
         });
     }
 
@@ -137,7 +142,7 @@ public class QuestionAskerController {
         }
     }
 
-    public void finishQuizSessionAndShowStats() {
+    public void finishQuizSessionAndShowStats(String scene) {
         /// Clear current session
         QuizSession savedSessionData = currentSession;
         currentSession = null;
@@ -148,11 +153,11 @@ public class QuestionAskerController {
         /// Show stats!
         try {
             /// Show stat scene
-            UIService.setActiveScene("Stats");
+            UIService.setActiveScene(scene);
 
             /// Update scene values
-            StatsController statsController = (StatsController) UIService.getController("Stats");
-            statsController.setViewWithSessionData(savedSessionData);
+            EndGamePage endScene = (EndGamePage) UIService.getController(scene);
+            endScene.setViewWithSessionData(savedSessionData);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
