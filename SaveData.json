@@ -1,1 +1,3 @@
-{"a":{"password":"a","eliminationGameHistory":[],"increasingDifficultyGameHistory":[3,0],"randomlyChosenGameHistory":[1]}}
+
+{"a":{"password":"a","eliminationGameHistory":[0,0,2,0,2,0,0],"increasingDifficultyGameHistory":[3,0,1,0,0,1,2,1,0,0,0,3,1,1,0,0,1,2],"randomlyChosenGameHistory":[1,1]},"ab":{"password":"a","eliminationGameHistory":[],"increasingDifficultyGameHistory":[],"randomlyChosenGameHistory":[]},"aa":{"password":"a","eliminationGameHistory":[],"increasingDifficultyGameHistory":[],"randomlyChosenGameHistory":[]}}
+

@@ -4,7 +4,7 @@
 
 <?import javafx.scene.control.Button?>
 <VBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.ise.patrickandjean.quizapp2.Pages.Stats.StatsController">
+      fx:controller="com.ise.patrickandjean.quizapp2.Pages.EndGamePages.QsOver">
     <VBox alignment="CENTER" spacing="20" styleClass="outer-rounded-box">
         <!-- Title "Well done, user!" -->
         <Text text="Well done, user!" fx:id="mainTitle"/>
