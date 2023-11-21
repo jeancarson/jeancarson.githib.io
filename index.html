@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funny Birthday Card</title>
+    <title>Quizler - Download</title>
     <style>
         body {
             background-color: #08415C;
@@ -17,7 +17,7 @@
             color: #FBB13C;
         }
 
-        .birthday-message {
+        .download-section {
             margin-top: 30px;
             padding: 20px;
             background-color: #23001E;
@@ -25,53 +25,26 @@
             color: #FFCCCC;
         }
 
-        #cat-image {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 100%;
-            max-height: 100%;
-            cursor: pointer;
+        .download-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #FBB13C;
+            color: #23001E;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
         }
     </style>
-    <script>
-        // Function to show and move the cat image
-        function showAndMoveCat() {
-            const catImage = document.getElementById('cat-image');
-            
-            // Randomize the position
-            const randomX = Math.floor(Math.random() * window.innerWidth);
-            const randomY = Math.floor(Math.random() * window.innerHeight);
-
-            catImage.style.left = `${randomX}px`;
-            catImage.style.top = `${randomY}px`;
-
-            // Toggle visibility
-            catImage.style.display = 'block';
-
-            // Move the cat on each click
-            catImage.onclick = () => {
-                const newX = Math.floor(Math.random() * window.innerWidth);
-                const newY = Math.floor(Math.random() * window.innerHeight);
-
-                catImage.style.left = `${newX}px`;
-                catImage.style.top = `${newY}px`;
-            };
-        }
-    </script>
 </head>
 <body>
 
-    <h1>Happy Birthday, [Friend's Name]!</h1>
+    <h1>Quizler - Download Page</h1>
 
-    <div class="birthday-message">
-        <p>Wishing you a day filled with laughter and joy!</p>
-        <button onclick="showAndMoveCat()">Click for a Surprise!</button>
+    <div class="download-section">
+        <p>Thank you for choosing Quizler! To get started, download the JAR file below:</p>
+        <a href="path/to/your/quizler-app.jar" class="download-link" download>Download Quizler JAR</a>
     </div>
-
-    <img id="cat-image" src="cat.jpg" alt="Surprise Cat">
 
 </body>
 </html>
