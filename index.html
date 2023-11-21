@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Card</title>
+    <style>
+        body {
+            background-color: #08415C;
+            color: #FFCCCC;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FBB13C;
+        }
+
+        .birthday-message {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #23001E;
+            border-radius: 10px;
+            color: #FFCCCC;
+        }
+
+        .funny-popup {
+            display: none;
+            background-color: #FBB13C;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        // Function to show a funny popup
+        function showFunnyPopup(message) {
+            const popup = document.createElement('div');
+            popup.classList.add('funny-popup');
+            popup.textContent = message;
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                popup.remove();
+            }, 3000); // Remove the popup after 3 seconds
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Happy Birthday, RUAN!</h1>
+
+    <div class="birthday-message">
+        <p>Wishing you a day filled with laughter and joy!</p>
+        <button onclick="showFunnyPopup('Cheap shoes for sale in your area!')">Click for a Surprise!</button>
+    </div>
+
+</body>
+</html>
