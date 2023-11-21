@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizler - Download</title>
+    <title>Happy Birthday Card</title>
     <style>
         body {
             background-color: #08415C;
@@ -17,7 +17,7 @@
             color: #FBB13C;
         }
 
-        .download-section {
+        .birthday-message {
             margin-top: 30px;
             padding: 20px;
             background-color: #23001E;
@@ -25,25 +25,35 @@
             color: #FFCCCC;
         }
 
-        .download-link {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
+        .funny-popup {
+            display: none;
             background-color: #FBB13C;
-            color: #23001E;
-            text-decoration: none;
-            font-weight: bold;
+            padding: 10px;
+            margin: 10px;
             border-radius: 5px;
         }
     </style>
+    <script>
+        // Function to show a funny popup
+        function showFunnyPopup(message) {
+            const popup = document.createElement('div');
+            popup.classList.add('funny-popup');
+            popup.textContent = message;
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                popup.remove();
+            }, 3000); // Remove the popup after 3 seconds
+        }
+    </script>
 </head>
 <body>
 
-    <h1>Quizler - Download Page</h1>
+    <h1>Happy Birthday, RUAN!</h1>
 
-    <div class="download-section">
-        <p>Thank you for choosing Quizler! To get started, download the JAR file below:</p>
-        <a href="path/to/your/quizler-app.jar" class="download-link" download>Download Quizler JAR</a>
+    <div class="birthday-message">
+        <p>Wishing you a day filled with laughter and joy!</p>
+        <button onclick="showFunnyPopup('Cheap shoes for sale in your area!')">Click for a Surprise!</button>
     </div>
 
 </body>
