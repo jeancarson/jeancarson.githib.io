@@ -1,51 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizler - Download</title>
+    <title>Download Quizler</title>
     <style>
         body {
             background-color: #08415C;
             color: #FFCCCC;
             font-family: 'Arial', sans-serif;
             text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
 
-        h1 {
-            color: #FBB13C;
+        header {
+            background-color: #FBB13C;
+            padding: 20px;
+            color: #23001E;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
-        .download-section {
-            margin-top: 30px;
-            padding: 20px;
+        #download-btn {
             background-color: #23001E;
-            border-radius: 10px;
             color: #FFCCCC;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .download-link {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
+        #download-btn:hover {
             background-color: #FBB13C;
             color: #23001E;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
+        }
+
+        #app-info {
+            margin: 20px;
+        }
+
+        #instructions {
+            margin: 20px;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Quizler - Download Page</h1>
+    <header>
+        Download Quizler
+    </header>
 
-    <div class="download-section">
-        <p>Thank you for choosing Quizler! To get started, download the JAR file below:</p>
-        <a href="QuizApp2.jar" class="download-link" download>Download Quizler JAR</a>
+    <button id="download-btn">Download Now</button>
+
+    <div id="app-info">
+        <h2>App Information</h2>
+        <!-- Provide information about your app -->
+        <p>My app is class</p>
+    </div>
+
+    <div id="instructions">
+        <h2>Instructions</h2>
+        <!-- Provide instructions for using your app -->
+        <p>download it NOW</p>
     </div>
 
 </body>
-</html>
 
+</html>
