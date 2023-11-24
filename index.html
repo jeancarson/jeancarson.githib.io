@@ -1,74 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Quizler</title>
+    <title>Creative Recipe</title>
     <style>
         body {
-            background-color: #08415C;
-            color: #FFCCCC;
             font-family: 'Arial', sans-serif;
-            text-align: center;
+            background-color: #f4f4f4;
             margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .recipe-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .ingredients {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
             padding: 0;
         }
 
-        header {
-            background-color: #FBB13C;
-            padding: 20px;
-            color: #23001E;
-            font-size: 28px;
-            font-weight: bold;
-            letter-spacing: 2px;
+        li {
+            margin-bottom: 10px;
         }
 
-        #download-btn {
-            background-color: #23001E;
-            color: #FFCCCC;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .instructions {
+            margin-top: 20px;
         }
 
-        #download-btn:hover {
-            background-color: #FBB13C;
-            color: #23001E;
+        ol {
+            padding-left: 20px;
         }
 
-        #app-info {
-            margin: 20px;
-        }
-
-        #instructions {
-            margin: 20px;
+        li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
-
 <body>
 
-    <header>
-        Download Quizler
-    </header>
+<div class="recipe-container">
+    <h1>Delicious Chinchilla Delight</h1>
 
-    <button id="download-btn">Download Now</button>
+    <p>Indulge in this unique and savory chinchilla-inspired recipe that will tantalize your taste buds.</p>
 
-    <div id="app-info">
-        <h2>App Information</h2>
-        <!-- Provide information about your app -->
-        <p>My app is class</p>
+    <div class="ingredients">
+        <h2>Ingredients:</h2>
+        <ul>
+            <li>Fresh Chinchilla Meat</li>
+            <li>Herbs and Spices</li>
+            <li>Organic Vegetables</li>
+            <li>Secret Sauce</li>
+        </ul>
     </div>
 
-    <div id="instructions">
-        <h2>Instructions</h2>
-        <!-- Provide instructions for using your app -->
-        <p>download it NOW</p>
+    <div class="instructions">
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Prepare the fresh chinchilla meat by marinating it with a blend of herbs and spices.</li>
+            <li>Sauté organic vegetables until they are tender and flavorful.</li>
+            <li>Cook the marinated chinchilla meat to perfection.</li>
+            <li>Drizzle the secret sauce over the dish for an extra burst of flavor.</li>
+            <li>Serve and enjoy your unique and delicious chinchilla delight!</li>
+        </ol>
     </div>
+</div>
 
 </body>
-
 </html>
