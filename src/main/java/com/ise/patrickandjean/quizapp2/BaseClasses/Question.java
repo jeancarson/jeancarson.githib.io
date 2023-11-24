@@ -6,11 +6,11 @@ public class Question {
     //All of the characteristics a Question object must have
     String text;
     String[] answers;
-    String difficulty;
+    Difficulty difficulty;
     String category;
 
     //Constructor for Question class
-    public Question(String question, String[] answers, String difficulty, String category) {
+    public Question(String question, String[] answers, Difficulty difficulty, String category) {
         this.text = question;
         this.answers = answers;
         this.difficulty = difficulty;
@@ -27,7 +27,7 @@ public class Question {
         return answers;
     }
 
-    public String getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 

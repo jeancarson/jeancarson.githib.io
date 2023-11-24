@@ -31,9 +31,9 @@ public class UIService {
 
     public static void setActiveScene(String name) throws IOException {
         /// Get UI elements + css
-        FXMLLoader loader = new FXMLLoader(getResource("/" + name + "/" + name + ".fxml"));
+        FXMLLoader loader = new FXMLLoader(getResource( name + "/" + name + ".fxml"));
         Parent root = loader.load();
-        String resourcePath = getResource("/" + name + "/" + name + "Style.css").toExternalForm();
+        String resourcePath = getResource(name + "/" + name + "Style.css").toExternalForm();
 
         /// Store controller for later external access
         storedControllerReferences.put(name, loader.getController());

@@ -1,7 +1,7 @@
 package com.ise.patrickandjean.quizapp2.GameModes;
 
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
-import com.ise.patrickandjean.quizapp2.BaseClasses.QuestionBank;
+import com.ise.patrickandjean.quizapp2.BaseClasses.QBank;
 import com.ise.patrickandjean.quizapp2.Pages.QuestionAsker.QuestionAskerController;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
 import javafx.concurrent.Task;
@@ -13,7 +13,7 @@ public class RandomlyChosen extends GameMode {
     @Override
     public void run() {
         /// Get questions that we'll ask
-        QuestionBank QB = new QuestionBank();
+        QBank QB = new QBank();
         ArrayList<Question> questionsToAsk = QB.popQuestionRandom(TOTAL_QUESTIONS);
 
         /// Start Game loop

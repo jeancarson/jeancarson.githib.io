@@ -52,6 +52,7 @@ public class QuestionAskerController {
     private void startTimerUIUpdateLoop() {
         Executors.newSingleThreadExecutor().execute(() -> {
             Duration duration = Duration.ofSeconds((long) (60));
+            int GameLengthInSecs = 60;
             while (duration.compareTo(Duration.ZERO) > 0) {
                 /// Game over - don't need to update timer anymore
                 if (currentSession == null || !currentSession.isActive()) {
@@ -60,7 +61,7 @@ public class QuestionAskerController {
 
                 /// Vars
                 double secondsSinceQuizStart = Math.floor((double) (System.currentTimeMillis() - currentSession.getStartEpoch()) / 1000);
-                duration = Duration.ofSeconds((long) (60- secondsSinceQuizStart));
+                duration = Duration.ofSeconds((long) (GameLengthInSecs- secondsSinceQuizStart));
 
 
                 //  THIS WILL BE CHANGED TO COUNT DOWN FROM 1 MIN AND KICK YOU OUT

@@ -1,7 +1,8 @@
 package com.ise.patrickandjean.quizapp2.GameModes;
 
+import com.ise.patrickandjean.quizapp2.BaseClasses.Difficulty;
 import com.ise.patrickandjean.quizapp2.BaseClasses.Question;
-import com.ise.patrickandjean.quizapp2.BaseClasses.QuestionBank;
+import com.ise.patrickandjean.quizapp2.BaseClasses.QBank;
 import com.ise.patrickandjean.quizapp2.Pages.QuestionAsker.QuestionAskerController;
 import com.ise.patrickandjean.quizapp2.Services.UIService;
 import javafx.concurrent.Task;
@@ -13,11 +14,11 @@ public class IncreasingDifficulty extends GameMode {
     @Override
     public void run() {
         /// Get questions that we'll ask
-        QuestionBank QB = new QuestionBank();
+        QBank QB = new QBank();
         ArrayList<Question> questionsToAsk = new ArrayList<>();
-        questionsToAsk.addAll(QB.popQuestionByDifficulty("Novice", 2));
-        questionsToAsk.addAll(QB.popQuestionByDifficulty("Intermediate", 2));
-        questionsToAsk.addAll(QB.popQuestionByDifficulty("Expert", 2));
+        questionsToAsk.addAll(QB.popQuestionByDifficulty(Difficulty.NOVICE, 2));
+        questionsToAsk.addAll(QB.popQuestionByDifficulty(Difficulty.INTERMEDIATE, 2));
+        questionsToAsk.addAll(QB.popQuestionByDifficulty(Difficulty.EXPERT, 2));
 
         /// Start Game loop
         Task<Void> gameTask = new Task<Void>() {
